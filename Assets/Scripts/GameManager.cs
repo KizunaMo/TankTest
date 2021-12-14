@@ -103,9 +103,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     private Transform GetRandomSpawnPoint()
     {
         var spawnPoints = GetAllObjectsOfTypeInScene<SpawnPoint>();
-        return spawnPoints.Count == 0
-        ? defaultSpawnPoint.transform
-        : spawnPoints[Random.Range(0, spawnPoints.Count)].transform;
+        return spawnPoints.Count == 0? defaultSpawnPoint.transform: spawnPoints[Random.Range(0, spawnPoints.Count)].transform;
     }
 
 
