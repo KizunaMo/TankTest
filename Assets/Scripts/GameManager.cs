@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     private GameObject defaultSpawnPoint;
 
 
+
     void Awake()
     {
         if (instance != null)
