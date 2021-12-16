@@ -23,6 +23,7 @@ namespace Complete
 
         [SerializeField] private Transform firePoint;
         [SerializeField] private float rotationSpeed = 30f;
+        [SerializeField] private Transform fireUI;
         float turnRotation;
 
         private void Awake()
@@ -157,6 +158,7 @@ namespace Complete
             {
                 float turn = turnRotation * rotationSpeed * Time.deltaTime;
                 firePoint.transform.Rotate(Vector3.up,turn);
+                fireUI.forward = firePoint.forward;
             }
         }
     }
