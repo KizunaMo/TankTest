@@ -23,6 +23,8 @@ namespace Complete
         private float m_ChargeSpeed;                // How fast the launch force increases, based on the max charge time.
         private bool m_Fired;                       // Whether or not the shell has been launched with this button press.
 
+        private float sendFirePosition;
+
 
         private void OnEnable()
         {

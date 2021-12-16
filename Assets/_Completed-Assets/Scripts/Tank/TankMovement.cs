@@ -24,7 +24,6 @@ namespace Complete
         [SerializeField] private Transform firePoint;
         [SerializeField] private float rotationSpeed = 30f;
         float turnRotation;
-        float turnLeft;
 
         private void Awake()
         {
@@ -125,7 +124,6 @@ namespace Complete
             // Adjust the rigidbodies position and orientation in FixedUpdate.
             Move();
             Turn();
-            FireRotation();
         }
 
 
@@ -149,13 +147,14 @@ namespace Complete
 
             // Apply this rotation to the rigidbody's rotation.
             m_Rigidbody.MoveRotation(m_Rigidbody.rotation * turnRotation);
+
+            FireRotation();
         }
 
         private void FireRotation()
         {
             if(turnRotation!=0 )
             {
-                Debug.Log(turnRotation + turnLeft);
                 float turn = turnRotation * rotationSpeed * Time.deltaTime;
                 firePoint.transform.Rotate(Vector3.up,turn);
             }
