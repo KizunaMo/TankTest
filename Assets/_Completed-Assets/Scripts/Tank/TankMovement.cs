@@ -148,18 +148,37 @@ namespace Complete
 
             // Apply this rotation to the rigidbody's rotation.
             m_Rigidbody.MoveRotation(m_Rigidbody.rotation * turnRotation);
+            LimitAngle(120);
+            //float rot = Mathf.Clamp(m_Rigidbody.rotation.y, -90, 90);
 
             FireRotation();
         }
 
         private void FireRotation()
         {
-            if(turnRotation!=0 )
+            if (turnRotation != 0)
             {
-                float turn = turnRotation * rotationSpeed * Time.deltaTime;
-                firePoint.transform.Rotate(Vector3.up,turn);
+                float turn = -turnRotation * rotationSpeed * Time.deltaTime;
+                firePoint.transform.Rotate(Vector3.up, turn);
                 fireUI.forward = firePoint.forward;
             }
         }
+        private void LimitAngle(float angle)
+        {
+            Vector3 vect = this.transform.eulerAngles;
+            float xcream = IsPosNum(vect.y);
+            if (xcream > angle)
+                this.transform.rotation = Quaternion.Euler(vect.x, angle, 0);
+            else if (xcream < -angle)
+                this.transform.rotation = Quaternion.Euler(vect.x, -angle, 0);
+        }
+        private float IsPosNum(float x)
+        {
+            x -= 180;
+            if (x < 0)
+                return x + 180;
+            else return x - 180;
+        }
+
     }
 }
